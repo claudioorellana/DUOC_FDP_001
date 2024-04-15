@@ -25,7 +25,7 @@ public class Teatro_Moro_COT {
             System.out.println("Elija una opcion:");
             System.out.println("[1] Comprar");
             System.out.println("[2] Lista de precios y descuentos");
-            System.out.println("[3] Salir");
+            System.out.println("[3] Imprimir Boleta y Salir");
             opcion = scan.nextInt();
             scan.nextLine(); // Consume el carácter de nueva línea
             switch (opcion) {
