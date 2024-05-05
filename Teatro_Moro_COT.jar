@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
-
+import java.util.InputMismatchException;
 
 public class Teatro_Moro_COT {
     static int entradasVendidas = 0;
@@ -34,23 +34,31 @@ public class Teatro_Moro_COT {
             System.out.println("[2] Borrar Compra");
             System.out.println("[3] Lista de precios y descuentos");
             System.out.println("[4] Salir");
-            opcion = scan.nextInt();
-            scan.nextLine(); // Consume el carácter de nueva línea
-            switch (opcion) {
-                case 1:
-                    comprar();
-                    break;
-                case 2:
-                    borrar();
-                    break;
-                case 3:
-                    descuentos();
-                    break;
-                case 4:
-                    salir();
-                    break;
-                default:
-                    System.out.println("Debe ingresar una opcion valida");
+
+            try {
+                opcion = scan.nextInt();
+                scan.nextLine(); // Consume el carácter de nueva línea
+
+                switch (opcion) {
+                    case 1:
+                        comprar();
+                        break;
+                    case 2:
+                        borrar();
+                        break;
+                    case 3:
+                        descuentos();
+                        break;
+                    case 4:
+                        salir();
+                        break;
+                    default:
+                        System.out.println("Debe ingresar una opcion valida");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Debe ingresar un numero entero entre 1 y 4");
+                System.out.println("\n");
+                scan.nextLine(); // Limpiar el búfer del escáner
             }
         } while (opcion != 4);
     }
@@ -182,7 +190,7 @@ public class Teatro_Moro_COT {
 
         System.out.println("Seleccione el numero de compra que desea borrar:");
         for (int i = 0; i < boletaFinal.size(); i++) {
-            System.out.println((i + 1) + ". Compra:");
+            System.out.println("[" + (i + 1) + "] Compra:");
             System.out.println(boletaFinal.get(i));
         }
 
@@ -309,18 +317,18 @@ public class Teatro_Moro_COT {
     }
 
     static void descuentos() {
-        System.out.println("\n-------------------------------------------------------------");
-        System.out.println("TEATRO MORO");
-        System.out.println("LISTA DE PRECIOS");
-        System.out.println("VIP: $25.000");
-        System.out.println("Platea baja: $19.000");
-        System.out.println("Platea alta: $11.000");
-        System.out.println("Palco: $7.200\n");
-        System.out.println("DESCUENTOS");
-        System.out.println("Estudiante: 10%");
-        System.out.println("Tercera edad (a partir de 60 años): 15%");
-        System.out.println("Promocion compra 3 entradas o mas: 20%");
-        System.out.println("-------------------------------------------------------------\n");
+        System.out.println(azul+"\n-------------------------------------------------------------");
+        System.out.println(azul+"TEATRO MORO");
+        System.out.println(azul+"LISTA DE PRECIOS");
+        System.out.println(azul+"VIP: $25.000");
+        System.out.println(azul+"Platea baja: $19.000");
+        System.out.println(azul+"Platea alta: $11.000");
+        System.out.println(azul+"Palco: $7.200\n");
+        System.out.println(azul+"DESCUENTOS");
+        System.out.println(azul+"Estudiante: 10%");
+        System.out.println(azul+"Tercera edad (a partir de 60 años): 15%");
+        System.out.println(azul+"Promocion compra 3 entradas o mas: 20%");
+        System.out.println(azul+"-------------------------------------------------------------\n");
     }
 
     static void salir() {
